@@ -1,10 +1,6 @@
 form{
   margin: 5rem;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 .forecast {
   text-align: center;
   display: grid;
