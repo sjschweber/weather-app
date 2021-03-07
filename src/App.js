@@ -38,18 +38,18 @@ function App() {
 
   return (
     <div className="app__container">
-      <form>
-        <input type="text" placeholder="city, zipcode, town"></input>
-        <button>Enter</button>
-      </form>
-      <div className="forecast">
+        <form>
+          <input className="location_input" type="text" placeholder="city, zipcode, town"></input>
+          <button>Enter</button>
+        </form>
+
 
         {days.map((item) => {
           return(
             <Card day={item.day} degrees={item.degrees} />
           )
         })}
-      </div>
+
     </div>
   );
 }
