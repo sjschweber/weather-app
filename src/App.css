@@ -1,40 +1,72 @@
-form{
-  margin: 5rem;
-}
-.forecast {
+
+.app__container {
+  margin-top: 5rem;
   text-align: center;
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto;
+  grid-template-areas:
+    "header header header header header header header"
+}
+
+.location_input{
+  padding-bottom: 5px;
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 20px;
+}
+.location_input:focus{
+  outline: none;
+}
+button{
+  padding: 5px;
+  width: 4rem;
+  margin-left: 1rem;
+  background: white;
+  border: 1px solid black;
+}
+
+form{
+  grid-area: header;
+  text-align: left;
 }
 
 @media(max-width: 600px){
-  .forecast{
+  .app__container{
     grid-template-columns: auto;
     justify-content: center;
+    grid-template-areas:
+      "header"
   }
 }
 
 @media(min-width: 600px){
-  .forecast{
+  .app__container{
     grid-template-columns: auto auto auto;
+    grid-template-rows: 5rem auto;
     justify-content: center;
     column-gap: 7px;
+    grid-template-areas:
+      "header header header"
   }
 }
 
 @media(min-width: 768px){
-  .forecast{
+  .app__container{
     grid-template-columns: auto auto auto auto auto;
     justify-content: center;
     column-gap: 10px;
+    grid-template-areas:
+      "header header header header header"
 
   }
 }
 
 @media(min-width: 992px){
-  .forecast{
+  .app__container{
     grid-template-columns: auto auto auto auto auto auto auto;
     justify-content: center;
     column-gap: 10px;
+    grid-template-areas:
+      "header header header header header header header"
   }
 }
