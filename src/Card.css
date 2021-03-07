@@ -1,0 +1,47 @@
+.card{
+
+  width: 9rem;
+  height: 20rem;
+  box-shadow: 2px 5px 5px #888888;
+
+}
+
+.card__header{
+  border-bottom: 2px solid red;
+  border-top: 1px solid red;
+  padding: 1rem;
+}
+
+.card__img{
+}
+
+img{
+  max-height: 100%;
+  max-width: 100%;
+}
+
+@media(max-width: 600px){
+  .card{
+    width: 15rem;
+    height: 20rem;
+  }
+}
+
+@media(min-width: 600px){
+  .card{
+    width: 13rem;
+    height: 20rem;
+  }
+}
+@media(min-width: 768px){
+  .card{
+    width: 10rem;
+    height: 20rem;
+  }
+}
+@media(min-width: 992px){
+  .card{
+    width: 9rem;
+    height: 20rem;
+  }
+}
