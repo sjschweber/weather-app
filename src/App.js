@@ -72,8 +72,8 @@ function App() {
   return (
     <div className="app__container">
         <form>
-          <input className="location_input" type="text" placeholder="city, zipcode, town"></input>
-          <button>Enter</button>
+          <input id="locationText" className="location_input" type="text" placeholder="city, zipcode, town"></input>
+          <button onClick={onClick}>Enter</button>
         </form>
 
 
