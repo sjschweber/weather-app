@@ -9,6 +9,8 @@ const API_KEY = "NAQgnnEuhIjNziOdkNHGv4ZWBxrdUSqn";
 function App() {
 
   const [location, setLocation] = useState("");
+  const [weather, setWeather] = useState("");
+  const [isLocationRetrieved, setIsLocationRetrieved] = useState(false);
 
   const x = "Toronto";
 
@@ -24,13 +26,15 @@ function App() {
         axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${res}?apikey=${API_KEY}`)
           .then(data =>{
             console.log(data);
+            setIsLocationRetrieved(true);
+            setWeather(data.data.DailyForecasts[0].Temperature.Maximum.Value);
             return data;
           })
       }
 
-      )
+    ).catch(err => err);
 
-  })
+  }, [location])
 
   function onClick(e){
     e.preventDefault();
@@ -76,12 +80,16 @@ function App() {
           <button onClick={onClick}>Enter</button>
         </form>
 
+        {
+          isLocationRetrieved ? <Card day="Today" degrees={weather}/> : null
+        }
 
-        {days.map((item) => {
+
+        { days.map((item) => {
           return(
             <Card day={item.day} degrees={item.degrees} />
           )
-        })}
+        }) }
 
     </div>
   );
