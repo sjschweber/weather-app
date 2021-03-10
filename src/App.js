@@ -22,31 +22,48 @@ function App() {
 
   useEffect(() => {
 
+
+
+  }, [location])
+
+  function handleChange(e){
+
+    e.preventDefault();
+    setLocation(e.target.value);
+
+  }
+  function onClick(e){
+    e.preventDefault();
+
+
     axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${API_KEY}&q=${location}`)
       .then(res => {
+
+        if(res.data.length == 0){
+          return undefined;
+        }
+          console.log(res);
          console.log(res.data[0].Key);
          return res.data[0].Key
       })
       .then(res =>{
 
+        if(res === undefined){
+          setLocationExists(false);
+          return undefined;
+        }
         axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${res}?apikey=${API_KEY}`)
           .then(data =>{
             console.log(data);
             setIsLocationRetrieved(true);
+            setLocationExists(true);
+            setExistingLocation(location);
             setWeather(data.data.DailyForecasts[0].Temperature.Maximum.Value);
             return data;
-          })
+          }).catch(err => console.log(err))
       }
 
-    ).catch(err => err);
-
-  }, [location])
-
-  function onClick(e){
-    e.preventDefault();
-    setLocation(document.getElementById("locationText").value);
-    createDays();
-    console.log(days);
+    ).catch(err => console.log(err));
   }
 
   function createDays(){
