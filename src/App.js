@@ -54,19 +54,10 @@ function App() {
     ).catch(err => console.log(err));
   }
 
-  function createDays(){
-    let date = new Date();
-    let tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate()+1);
-
-    setDays([
-      date.toLocaleDateString('en-US', {weekday: 'long'}),
-      tomorrow.toLocaleDateString('en-US', {weekday: 'long'})
-    ])
-  }
-
   return (
+
     <div className="app__container">
+
         <form>
           <input onChange={handleChange} id="locationText" className="location_input" type="text" placeholder="city, zipcode, town"></input>
           <button onClick={onClick}>Enter</button>
