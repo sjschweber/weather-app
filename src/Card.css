@@ -1,14 +1,22 @@
 .card{
 
-  width: 9rem;
+  width: 10rem;
   height: 20rem;
   box-shadow: 2px 5px 5px #888888;
+  margin: 2rem;
+  background-color: white;
+  transition: .7s;
+  border-radius: 5%;
 
 }
 
+.card:hover{
+  transform: scale(1.04, 1.04);
+  box-shadow: 5px 5px 5px #888888;
+}
+
 .card__header{
-  border-bottom: 2px solid red;
-  border-top: 1px solid red;
+  color: #B0B0B0;
   padding: 1rem;
 }
 
@@ -20,7 +28,7 @@ img{
   max-width: 100%;
 }
 
-@media(max-width: 600px){
+/* @media(max-width: 600px){
   .card{
     width: 15rem;
     height: 20rem;
@@ -44,4 +52,4 @@ img{
     width: 9rem;
     height: 20rem;
   }
-}
+} */
