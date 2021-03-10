@@ -32,8 +32,7 @@ function App() {
         if(res.data.length == 0){
           return undefined;
         }
-          console.log(res);
-         console.log(res.data[0].Key);
+        
          return res.data[0].Key
       })
       .then(res =>{
