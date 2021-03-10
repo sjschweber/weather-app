@@ -11,6 +11,10 @@ function App() {
   const [location, setLocation] = useState("");
   const [weather, setWeather] = useState("");
   const [isLocationRetrieved, setIsLocationRetrieved] = useState(false);
+  const [days, setDays] = useState([]);
+
+
+
 
   const x = "Toronto";
 
@@ -39,39 +43,21 @@ function App() {
   function onClick(e){
     e.preventDefault();
     setLocation(document.getElementById("locationText").value);
-    console.log(location);
+    createDays();
+    console.log(days);
   }
 
-  var days = [
-    {
-      day: "Monday",
-      degrees: 70
-    },
-    {
-      day: "Tuesday",
-      degrees: 55,
-    },
-    {
-      day: "Wednesday",
-      degrees: 77,
-    },
-    {
-      day: "Thursday",
-      degrees: 73
-    },
-    {
-      day: "Friday",
-      degrees: 74
-    },
-    {
-      day: "Saturday",
-      degrees: 80
-    },
-    {
-      day: "Sunday",
-      degrees: 81
-    }
-  ]
+  function createDays(){
+    let date = new Date();
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate()+1);
+
+    setDays([
+      date.toLocaleDateString('en-US', {weekday: 'long'}),
+      tomorrow.toLocaleDateString('en-US', {weekday: 'long'})
+    ])
+    console.log(days);
+  }
 
   return (
     <div className="app__container">
@@ -81,15 +67,9 @@ function App() {
         </form>
 
         {
-          isLocationRetrieved ? <Card day="Today" degrees={weather}/> : null
+          isLocationRetrieved ? <Card day={location} degrees={weather}/> : null
         }
 
-
-        { days.map((item) => {
-          return(
-            <Card day={item.day} degrees={item.degrees} />
-          )
-        }) }
 
     </div>
   );
