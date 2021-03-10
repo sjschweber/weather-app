@@ -1,3 +1,10 @@
+/* tag css */
+img{
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/* class css */
 .card{
 
   width: 10rem;
@@ -19,37 +26,3 @@
   color: #B0B0B0;
   padding: 1rem;
 }
-
-.card__img{
-}
-
-img{
-  max-height: 100%;
-  max-width: 100%;
-}
-
-/* @media(max-width: 600px){
-  .card{
-    width: 15rem;
-    height: 20rem;
-  }
-}
-
-@media(min-width: 600px){
-  .card{
-    width: 13rem;
-    height: 20rem;
-  }
-}
-@media(min-width: 768px){
-  .card{
-    width: 10rem;
-    height: 20rem;
-  }
-}
-@media(min-width: 992px){
-  .card{
-    width: 9rem;
-    height: 20rem;
-  }
-} */
