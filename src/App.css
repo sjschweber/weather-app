@@ -49,7 +49,7 @@ form{
   text-align: left;
 }
 
-@media(max-width: 600px){
+/* @media(max-width: 600px){
   .app__container{
     grid-template-columns: auto;
     justify-content: center;
@@ -88,4 +88,4 @@ form{
     grid-template-areas:
       "header header header header header header header"
   }
-}
+} */
