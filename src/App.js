@@ -44,7 +44,6 @@ function App() {
         axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${res}?apikey=${API_KEY}`)
           .then(data =>{
             console.log(data);
-            setIsLocationRetrieved(true);
             setLocationExists(true);
             setExistingLocation(location);
             setWeather(data.data.DailyForecasts[0].Temperature.Maximum.Value);
