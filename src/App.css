@@ -24,47 +24,24 @@ button:hover{
 }
 
 form{
-  grid-area: header;
   text-align: left;
 }
 
-/* @media(max-width: 600px){
-  .app__container{
-    grid-template-columns: auto;
-    justify-content: center;
-    grid-template-areas:
-      "header"
-  }
+/* class css */
+.app__container {
+  margin: 5rem;
+  text-align: center;
+  display: block;
 }
 
-@media(min-width: 600px){
-  .app__container{
-    grid-template-columns: auto auto auto;
-    grid-template-rows: 5rem auto;
-    justify-content: center;
-    column-gap: 7px;
-    grid-template-areas:
-      "header header header"
-  }
+.location_input{
+  background-color: inherit;
+  color: 	#404040;
+  padding-bottom: 5px;
+  border: none;
+  border-bottom: 2px solid #ffa88f;
+  font-size: 20px;
 }
-
-@media(min-width: 768px){
-  .app__container{
-    grid-template-columns: auto auto auto auto auto;
-    justify-content: center;
-    column-gap: 10px;
-    grid-template-areas:
-      "header header header header header"
-
-  }
+.location_input:focus{
+  outline: none;
 }
-
-@media(min-width: 992px){
-  .app__container{
-    grid-template-columns: auto auto auto auto auto auto auto;
-    justify-content: center;
-    column-gap: 10px;
-    grid-template-areas:
-      "header header header header header header header"
-  }
-} */
