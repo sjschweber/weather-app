@@ -75,18 +75,17 @@ function App() {
       date.toLocaleDateString('en-US', {weekday: 'long'}),
       tomorrow.toLocaleDateString('en-US', {weekday: 'long'})
     ])
-    console.log(days);
   }
 
   return (
     <div className="app__container">
         <form>
-          <input id="locationText" className="location_input" type="text" placeholder="city, zipcode, town"></input>
+          <input onChange={handleChange} id="locationText" className="location_input" type="text" placeholder="city, zipcode, town"></input>
           <button onClick={onClick}>Enter</button>
         </form>
 
         {
-          isLocationRetrieved ? <Card day={location} degrees={weather}/> : null
+          locationExists ? <Card day={existingLocation} degrees={weather}/> : null
         }
 
 
