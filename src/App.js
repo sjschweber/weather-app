@@ -10,21 +10,9 @@ function App() {
 
   const [location, setLocation] = useState("");
   const [weather, setWeather] = useState("");
-  const [isLocationRetrieved, setIsLocationRetrieved] = useState(false);
-  const [days, setDays] = useState([]);
   const [locationExists, setLocationExists] = useState(undefined);
   const [existingLocation, setExistingLocation] = useState("");
 
-
-
-
-  const x = "Toronto";
-
-  useEffect(() => {
-
-
-
-  }, [location])
 
   function handleChange(e){
 
@@ -32,7 +20,9 @@ function App() {
     setLocation(e.target.value);
 
   }
+
   function onClick(e){
+
     e.preventDefault();
 
 
