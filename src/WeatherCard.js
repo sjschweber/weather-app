@@ -1,9 +1,23 @@
 import React, {useState} from 'react';
 import sunImage from './media/sunny.png';
 import './Card.css';
+import './css/weather-icons.css';
 
 export default function Card(props){
 
+  // let iconName = "";
+  // let weatherConditions = props.weatherConditions;
+  // console.log(weatherConditions)
+  // switch(weatherConditions){
+  //   case "Sunny":
+  //     iconName = "wi wi-day-sunny"
+  //   case 'Cloudy':
+  //     iconName = "wi wi-day-cloudy"
+  //   default:
+  //     iconName = "wi wi-day-sunny";
+  // }
+
+  console.log(props.weatherConditions)
   return(
 
     <div className="card">
@@ -13,8 +27,9 @@ export default function Card(props){
       </div>
 
       <div className="card__img">
-        <img src={sunImage}></img>
+        <i className={props.weatherConditions}></i>
       </div>
+
 
       <div className="card__text">
         {props.degrees}
