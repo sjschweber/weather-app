@@ -12,7 +12,11 @@ function App() {
   const [weather, setWeather] = useState("");
   const [locationExists, setLocationExists] = useState(undefined);
   const [existingLocation, setExistingLocation] = useState("");
+  const [isDayTime, setIsDayTime] = useState("");
+  const [weatherConditions, setweatherConditions] = useState("");
 
+
+  let iconName = "";
 
   function handleChange(e){
 
