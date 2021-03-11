@@ -36,7 +36,7 @@ function App() {
         if(res.data.length == 0){
           return undefined;
         }
-        
+
          return res.data[0].Key
       })
       .then(res =>{
@@ -45,18 +45,31 @@ function App() {
           setLocationExists(false);
           return undefined;
         }
-        axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${res}?apikey=${API_KEY}`)
+        axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${res}?apikey=${API_KEY}`)
           .then(data =>{
+
             console.log(data);
             setLocationExists(true);
             setExistingLocation(location);
-            setWeather(data.data.DailyForecasts[0].Temperature.Maximum.Value);
+            setWeather(data.data[0].Temperature.Imperial.Value);
+            setweatherConditions(data.data[0].WeatherText)
+            
+
+            if(data.data[0].IsDayTime){
+              setIsDayTime(true);
+            }else{
+              setIsDayTime(false);
+            }
+
+
             return data;
           }).catch(err => console.log(err))
       }
 
     ).catch(err => console.log(err));
   }
+
+
 
   return (
 
@@ -68,7 +81,7 @@ function App() {
         </form>
 
         {
-          locationExists ? <Card day={existingLocation} degrees={weather}/> : null
+          locationExists ? <Card weatherConditions={weatherConditions} day={existingLocation} degrees={weather}/> : null
         }
 
 
