@@ -1,5 +1,6 @@
 
 /* tag css */
+
 body{
   background-image: linear-gradient(to bottom right, #8FE6FF, #dcf7ff);
   min-height: 100vh;
@@ -28,6 +29,7 @@ form{
 }
 
 /* class css */
+
 .app__container {
   margin: 5rem;
   text-align: center;
@@ -43,5 +45,6 @@ form{
   font-size: 20px;
 }
 .location_input:focus{
+  background-color: inherit;
   outline: none;
 }
