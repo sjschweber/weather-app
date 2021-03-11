@@ -16,6 +16,14 @@ img{
   border-radius: 5%;
 
 }
+.card__text{
+  font-size: 40px;
+}
+.card__img{
+
+  height: 6rem;
+  margin: 2rem;
+}
 
 .card:hover{
   transform: scale(1.04, 1.04);
@@ -25,4 +33,5 @@ img{
 .card__header{
   color: #B0B0B0;
   padding: 1rem;
+  font-size: 24px;
 }
