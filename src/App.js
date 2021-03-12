@@ -6,6 +6,8 @@ import axios from 'axios';
 
 const API_KEY = "NAQgnnEuhIjNziOdkNHGv4ZWBxrdUSqn";
 
+// const API_KEY = "4e79723db9cfecbef93a6f1ab823171c";
+
 function App() {
 
   const [location, setLocation] = useState("");
@@ -52,8 +54,40 @@ function App() {
             setLocationExists(true);
             setExistingLocation(location);
             setWeather(data.data[0].Temperature.Imperial.Value);
-            setweatherConditions(data.data[0].WeatherText)
-            
+
+
+            switch(data.data[0].WeatherText){
+              case "Mostly sunny":
+              case "Sunny":
+                setweatherConditions("wi wi-day-sunny");
+                break;
+              case "Partly sunny":
+              case "Intermittent clouds":
+              case "Hazy sunshine":
+              case "Cloudy":
+              case "Fog":
+              case 'Mostly cloudy':
+                setweatherConditions("wi wi-day-cloudy");
+                break;
+              case "Showers":
+              case "Mostly cloudy w/showers":
+              case "Partly sunny w/showers":
+                setweatherConditions("wi wi-day-showers")
+                break;
+              case "T-Storms":
+              case "Mostly cloudy w/t-storms":
+              case "Partly sunny w/t-storms":
+                setweatherConditions("wi wi-day-thunderstorm")
+                break;
+              case "Rain":
+                setweatherConditions("wi wi-rain")
+                break;
+              case "Snow":
+                setweatherConditions("wi wi-snow");
+                break;
+              default:
+                setweatherConditions("wi wi-day-sunny");
+            }
 
             if(data.data[0].IsDayTime){
               setIsDayTime(true);
