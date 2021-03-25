@@ -36,10 +36,14 @@ function App() {
 
   }
 
+  function capitalizeFirstChar(str){
+    let retStr = str.charAt(0).toUpperCase() + str.slice(1);
+    return retStr;
+  }
+
   function onClick(e){
 
     e.preventDefault();
-    console.log(location)
 
     axios(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=imperial`)
       .then(res => {
