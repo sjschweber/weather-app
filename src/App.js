@@ -12,14 +12,12 @@ const API_KEY = config.API_KEY;
 function App() {
 
   const [location, setLocation] = useState("");
-  const [degrees, setDegrees] = useState("");
   const [locationExists, setLocationExists] = useState(undefined);
-  const [existingLocation, setExistingLocation] = useState("");
-  const [isDayTime, setIsDayTime] = useState(null);
-  const [weatherConditions, setweatherConditions] = useState("");
-  const [icon, setIcon] = useState("");
+  const [locationArray, setLocationArray] = useState([]);
+  const [seenLocations, setSeenLocations] = useState([]);
 
   const iconList = {
+
     Clear: ["wi wi-owm-day-800", "wi wi-owm-night-800"],
     Rain: ["wi wi-owm-day-501", "wi wi-owm-night-501"],
     Clouds: ["wi wi-owm-804", "wi wi-owm-804"],
