@@ -56,30 +56,43 @@ function App() {
         let sunset = data.sys.sunset;
         let isDayOrNight = (time > sunset && time < sunrise) ? 1 : 0;
 
+        let icon = ""
+
         //get weather conditions
         let conditions = data.weather[0].main;
 
         //set Icon
         switch(conditions){
           case "Rain":
-            setIcon(iconList.Rain[isDayOrNight]);
+            icon = iconList.Rain[isDayOrNight];
             break;
           case "Clouds":
-            setIcon(iconList.Clouds[isDayOrNight]);
+            icon = iconList.Clouds[isDayOrNight];
             break;
           case "Clear":
-            setIcon(iconList.Clear[isDayOrNight]);
+            icon = iconList.Clear[isDayOrNight];
             break;
           case "Thunderstorm":
-            setIcon(iconList.Thunderstorm[isDayOrNight])
+            icon = iconList.Thunderstorm[isDayOrNight]
             break;
           default:
-            setIcon(iconList.Other[isDayOrNight]);
+            icon = iconList.Other[isDayOrNight];
         }
         //set state vars
-        setExistingLocation(location);
+        setSeenLocations([...seenLocations, location.toLowerCase()]);
         setLocationExists(true)
-        setDegrees(Math.floor(data.main.temp));
+
+        if(!seenLocations.includes(location.toLocaleLowerCase())){
+          setLocationArray([...locationArray, {
+            existing_location: capitalizeFirstChar(location),
+            degrees: Math.floor(data.main.temp),
+            isDay: isDayOrNight,
+            weatherConditions: conditions,
+            icon: icon,
+          }])
+        }
+
+
 
       }).catch(err => {
         console.log("invalid location")
@@ -88,6 +101,7 @@ function App() {
 
   }
 
+  console.log(locationArray)
 
 
   return (
@@ -99,9 +113,18 @@ function App() {
           <button onClick={onClick}>Enter</button>
         </form>
 
+        <div className="list__of__locations">
+
         {
-          locationExists ? <Card weatherConditions={icon} day={existingLocation} degrees={degrees}/> : null
+          locationArray.map((item) => {
+
+            return (<Card weatherConditions={item.icon} day={item.existing_location} degrees={item.degrees}/>)
+            
+          })
         }
+
+        </div>
+
 
 
     </div>
