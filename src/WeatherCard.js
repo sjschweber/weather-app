@@ -5,9 +5,6 @@ import './css/weather-icons.css';
 
 export default function Card(props){
 
-
-  console.log(props.weatherConditions)
-  
   return(
 
     <div className="card">
