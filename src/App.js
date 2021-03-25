@@ -4,18 +4,29 @@ import './App.css';
 import Card from './WeatherCard.js';
 import axios from 'axios';
 
-const API_KEY = "NAQgnnEuhIjNziOdkNHGv4ZWBxrdUSqn";
+const config = require('./config.js')
+const API_KEY = config.API_KEY;
 
-// const API_KEY = "4e79723db9cfecbef93a6f1ab823171c";
+
 
 function App() {
 
   const [location, setLocation] = useState("");
-  const [weather, setWeather] = useState("");
+  const [degrees, setDegrees] = useState("");
   const [locationExists, setLocationExists] = useState(undefined);
   const [existingLocation, setExistingLocation] = useState("");
-  const [isDayTime, setIsDayTime] = useState("");
+  const [isDayTime, setIsDayTime] = useState(null);
   const [weatherConditions, setweatherConditions] = useState("");
+  const [icon, setIcon] = useState("");
+
+  const iconList = {
+    Clear: ["wi wi-owm-day-800", "wi wi-owm-night-800"],
+    Rain: ["wi wi-owm-day-501", "wi wi-owm-night-501"],
+    Clouds: ["wi wi-owm-804", "wi wi-owm-804"],
+    Thunderstorm: ["wi wi-owm-day-531", "wi wi-owm-night-531"],
+    Other: ["wi wi-owm-day-741", "wi wi-owm-night-741"]
+
+  }
 
 
   let iconName = "";
