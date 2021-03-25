@@ -35,7 +35,11 @@ form{
   text-align: center;
   display: block;
 }
-
+.list__of__locations{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .location_input{
   background-color: inherit;
   color: 	#404040;
