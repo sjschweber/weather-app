@@ -98,7 +98,7 @@ function App() {
         </form>
 
         {
-          locationExists ? <Card weatherConditions={weatherConditions} day={existingLocation} degrees={weather}/> : null
+          locationExists ? <Card weatherConditions={icon} day={existingLocation} degrees={degrees}/> : null
         }
 
 
