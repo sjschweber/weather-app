@@ -41,77 +41,49 @@ function App() {
   function onClick(e){
 
     e.preventDefault();
+    console.log(location)
 
-
-    axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${API_KEY}&q=${location}`)
+    axios(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=imperial`)
       .then(res => {
 
-        if(res.data.length == 0){
-          return undefined;
-        }
+        let data = res.data;
 
-         return res.data[0].Key
+        //calculate if day or night
+        let time = Date.now()
+        let sunrise = data.sys.sunrise;
+        let sunset = data.sys.sunset;
+        let isDayOrNight = (time > sunset && time < sunrise) ? 1 : 0;
+
+        //get weather conditions
+        let conditions = data.weather[0].main;
+
+        //set Icon
+        switch(conditions){
+          case "Rain":
+            setIcon(iconList.Rain[isDayOrNight]);
+            break;
+          case "Clouds":
+            setIcon(iconList.Clouds[isDayOrNight]);
+            break;
+          case "Clear":
+            setIcon(iconList.Clear[isDayOrNight]);
+            break;
+          case "Thunderstorm":
+            setIcon(iconList.Thunderstorm[isDayOrNight])
+            break;
+          default:
+            setIcon(iconList.Other[isDayOrNight]);
+        }
+        //set state vars
+        setExistingLocation(location);
+        setLocationExists(true)
+        setDegrees(Math.floor(data.main.temp));
+
+      }).catch(err => {
+        console.log("invalid location")
+        setLocationExists(false);
       })
-      .then(res =>{
 
-        if(res === undefined){
-          setLocationExists(false);
-          return undefined;
-        }
-        axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${res}?apikey=${API_KEY}`)
-          .then(data =>{
-
-            console.log(data);
-            setLocationExists(true);
-            setExistingLocation(location);
-            setWeather(data.data[0].Temperature.Imperial.Value);
-
-
-            switch(data.data[0].WeatherText){
-              case "Mostly sunny":
-              case "Sunny":
-                setweatherConditions("wi wi-day-sunny");
-                break;
-              case "Partly sunny":
-              case "Intermittent clouds":
-              case "Hazy sunshine":
-              case "Cloudy":
-              case "Fog":
-              case 'Mostly cloudy':
-                setweatherConditions("wi wi-day-cloudy");
-                break;
-              case "Showers":
-              case "Mostly cloudy w/showers":
-              case "Partly sunny w/showers":
-                setweatherConditions("wi wi-day-showers")
-                break;
-              case "T-Storms":
-              case "Mostly cloudy w/t-storms":
-              case "Partly sunny w/t-storms":
-                setweatherConditions("wi wi-day-thunderstorm")
-                break;
-              case "Rain":
-                setweatherConditions("wi wi-rain")
-                break;
-              case "Snow":
-                setweatherConditions("wi wi-snow");
-                break;
-              default:
-                setweatherConditions("wi wi-day-sunny");
-            }
-
-            if(data.data[0].IsDayTime){
-              setIsDayTime(true);
-            }else{
-              setIsDayTime(false);
-            }
-
-
-            return data;
-          }).catch(err => console.log(err))
-      }
-
-    ).catch(err => console.log(err));
   }
 
 
