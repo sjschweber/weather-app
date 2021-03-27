@@ -18,11 +18,20 @@ img{
 }
 .card__text{
   font-size: 40px;
+  display: inline;
+  height: auto;
+  width: auto;
+  position: relative;
 }
 .card__img{
 
   height: 6rem;
   margin: 2rem;
+}
+
+.degree{
+  position: absolute;
+  bottom: 11px;
 }
 
 .card:hover{
