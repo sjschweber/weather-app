@@ -23,15 +23,16 @@ button:hover{
   background-color: #dcf7ff;
   border-color: #dcf7ff;
 }
-
+/*#ffa88f*/
 form{
+  margin: 2rem;
   text-align: left;
 }
 
 /* class css */
 
 .app__container {
-  margin: 5rem;
+  margin-top: 5rem;
   text-align: center;
   display: block;
 }
@@ -45,7 +46,7 @@ form{
   color: 	#404040;
   padding-bottom: 5px;
   border: none;
-  border-bottom: 2px solid #ffa88f;
+  border-bottom: 2px solid #dcf7ff;
   font-size: 20px;
 }
 .location_input:focus{
