@@ -20,7 +20,7 @@ function App() {
 
     Clear: ["wi wi-owm-day-800", "wi wi-owm-night-800"],
     Rain: ["wi wi-owm-day-501", "wi wi-owm-night-501"],
-    Clouds: ["wi wi-owm-804", "wi wi-owm-804"],
+    Clouds: ["wi wi-owm-804", "wi wi-owm-night-804"],
     Thunderstorm: ["wi wi-owm-day-531", "wi wi-owm-night-531"],
     Other: ["wi wi-owm-day-741", "wi wi-owm-night-741"]
 
@@ -36,8 +36,25 @@ function App() {
 
   }
 
-  function capitalizeFirstChar(str){
-    let retStr = str.charAt(0).toUpperCase() + str.slice(1);
+  function properlyCapitalize(str){
+
+    let retStr = "";
+    let nextIsCap = true;
+
+    //find all letters that need capitlization
+    for(var i = 0; i < str.length; i++){
+
+      if(str.charAt(i) === ' '){
+        retStr += str.charAt(i);
+        nextIsCap = true;
+      }else if(nextIsCap){
+        retStr += str.charAt(i).toUpperCase();
+        nextIsCap = false;
+      }else{
+        retStr += str.charAt(i);
+      }
+    }
+
     return retStr;
   }
 
@@ -54,8 +71,9 @@ function App() {
         let time = Date.now()
         let sunrise = data.sys.sunrise;
         let sunset = data.sys.sunset;
-        let isDayOrNight = (time > sunset && time < sunrise) ? 1 : 0;
-
+        let isDayOrNight = time > sunset ? 1 : 0;
+        console.log(time)
+        console.log(sunset)
         let icon = ""
 
         //get weather conditions
@@ -84,7 +102,7 @@ function App() {
 
         if(!seenLocations.includes(location.toLocaleLowerCase())){
           setLocationArray([...locationArray, {
-            existing_location: capitalizeFirstChar(location),
+            existing_location: properlyCapitalize(location),
             degrees: Math.floor(data.main.temp),
             isDay: isDayOrNight,
             weatherConditions: conditions,
@@ -101,7 +119,6 @@ function App() {
 
   }
 
-  console.log(locationArray)
 
 
   return (
@@ -119,7 +136,7 @@ function App() {
           locationArray.map((item) => {
 
             return (<Card weatherConditions={item.icon} day={item.existing_location} degrees={item.degrees}/>)
-            
+
           })
         }
 
