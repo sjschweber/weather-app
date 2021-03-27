@@ -15,13 +15,14 @@ export default function Card(props){
 
       <div className="card__img">
         <i className={props.weatherConditions}></i>
+
       </div>
 
 
       <div className="card__text">
         {props.degrees}
+        <i className="wi wi-fahrenheit degree"></i>
       </div>
-
     </div>
   )
 
