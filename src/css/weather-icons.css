@@ -407,6 +407,7 @@
   content: "\f03c";
 }
 .wi-fahrenheit:before {
+  font-size: 2rem;
   content: "\f045";
 }
 .wi-degrees:before {
